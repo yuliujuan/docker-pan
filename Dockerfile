@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
-        libpng16-dev \
+        libpng-dev \
         libcurl4-gnutls-dev \
         libmcrypt-dev \
         locales \
