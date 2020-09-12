@@ -1,5 +1,6 @@
 FROM php:7.0-apache
 
+RUN apt-get update && apt-get install -y apt-transport-https
 # add mcript and gd extension for php
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
