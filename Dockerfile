@@ -1,12 +1,12 @@
 FROM php:7.0-apache
 
-RUN apt-get update && apt-get install -y apt-transport-https
+# RUN apt-get update && apt-get install -y apt-transport-https
 # add mcript and gd extension for php
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
-        libpng12-dev \
+        libpng16-dev \
         libcurl4-gnutls-dev \
         libmcrypt-dev \
         locales \
