@@ -13,9 +13,8 @@ RUN apt-get update && apt-get install -y \
         graphicsmagick \
 	#mysql-client for php 7.0
 	#mysql-client \
-	#below 2 for 7.3 Debian
-	mariadb \
-	default-mysql-client \
+	#mariadb-client for php 7.3
+	mariadb-client \
         unzip \
         wget \
 	&& rm -rf /var/lib/apt/lists/* \
