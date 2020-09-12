@@ -1,6 +1,5 @@
 FROM php:7.3-apache
 
-# RUN apt-get update && apt-get install -y apt-transport-https
 # add mcript and gd extension for php
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
@@ -17,8 +16,20 @@ RUN apt-get update && apt-get install -y \
 	mariadb-client \
         unzip \
         wget \
-	&& rm -rf /var/lib/apt/lists/* \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+	cmake
+
+# Reinstall libzip
+RUN wget https://libzip.org/download/libzip-1.7.3.tar.gz \
+    && tar -zxvf libzip-1.7.3.tar.gz \
+    && cd libzip-1.7.3 \
+    && mkdir build && cd build && cmake .. && make && make install
+
+RUN cd ../.. \
+    && rm libzip-1.7.3.tar.gz \
+    && rm -rf libzip-1.7.3 \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) pdo_mysql exif zip gd opcache
 
 # set recommended PHP.ini settings
