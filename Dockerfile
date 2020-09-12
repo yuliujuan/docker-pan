@@ -16,18 +16,14 @@ RUN apt-get update && apt-get install -y \
 	mariadb-client \
         unzip \
         wget \
-	cmake
+	cmake \
+    && rm -rf /var/lib/apt/lists/*
 
 # Reinstall libzip
 RUN wget https://libzip.org/download/libzip-1.7.3.tar.gz \
     && tar -zxvf libzip-1.7.3.tar.gz \
     && cd libzip-1.7.3 \
     && mkdir build && cd build && cmake .. && make && make install
-
-RUN cd ../.. \
-    && rm libzip-1.7.3.tar.gz \
-    && rm -rf libzip-1.7.3 \
-    && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) pdo_mysql exif zip gd opcache
