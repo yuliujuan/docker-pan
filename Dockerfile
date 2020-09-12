@@ -11,7 +11,11 @@ RUN apt-get update && apt-get install -y \
         libmcrypt-dev \
         locales \
         graphicsmagick \
-	default-mysql-client \
+	#For php 7.0
+	#mysql-client \
+	#For 7.3 Debian
+	#default-mysql-client \
+	mariadb
         unzip \
         wget \
 	&& rm -rf /var/lib/apt/lists/* \
