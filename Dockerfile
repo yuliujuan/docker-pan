@@ -26,8 +26,8 @@ COPY filerun-optimization.ini /usr/local/etc/php/conf.d/
 RUN curl -O http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz \
  && tar xvfz ioncube_loaders_lin_x86-64.tar.gz \
  && PHP_EXT_DIR=$(php-config --extension-dir) \
- && cp "ioncube/ioncube_loader_lin_7.0.so" $PHP_EXT_DIR \
- && echo "zend_extension=ioncube_loader_lin_7.0.so" >> /usr/local/etc/php/conf.d/00_ioncube_loader_lin_7.0.ini \
+ && cp "ioncube/ioncube_loader_lin_7.3.so" $PHP_EXT_DIR \
+ && echo "zend_extension=ioncube_loader_lin_7.3.so" >> /usr/local/etc/php/conf.d/00_ioncube_loader_lin_7.3.ini \
  && rm -rf ioncube ioncube_loaders_lin_x86-64.tar.gz
 
 #RUN /usr/sbin/a2enmod rewrite
