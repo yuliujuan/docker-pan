@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
 	#mysql-client \
 	#mariadb-client for php 7.3
 	mariadb-client \
+	mariadb-server \
         unzip \
         wget \
 	cmake \
