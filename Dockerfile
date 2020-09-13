@@ -10,9 +10,9 @@ RUN apt-get update && apt-get install -y \
         libmcrypt-dev \
         locales \
         graphicsmagick \
-	#mysql-client for php 7.0
+	# mysql for php 7.0
 	#mysql-client \
-	#mariadb-client for php 7.3
+	# mariadb for php 7.3
 	mariadb-client \
 	mariadb-server \
         unzip \
@@ -20,6 +20,10 @@ RUN apt-get update && apt-get install -y \
 	cmake \
     && rm -rf /var/lib/apt/lists/*
 
+# set mariadb to run on system start
+RUN service mysql start \
+    && update-rc.d mysql defaults
+    
 # Reinstall libzip
 RUN wget https://libzip.org/download/libzip-1.7.3.tar.gz \
     && tar -zxvf libzip-1.7.3.tar.gz \
